@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net"
 	"sync"
@@ -41,7 +42,9 @@ type service struct {
 }
 
 func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment) (*pb.Response, error) {
+
 	consignment, err := s.repo.Create(req)
+	fmt.Print(consignment)
 	if err != nil {
 		return nil, err
 	}
